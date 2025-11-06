@@ -22,7 +22,7 @@ export function defaultModelGroupSetting(): ModelGroupSetting {
         topP: 0.0
       }
     },
-    disableDiveSystemPrompt: false
+    disableZaiSystemPrompt: false
   }
 }
 
@@ -56,7 +56,7 @@ export function fromModelConfigToLLMGroup(config: ModelConfig): LLMGroup {
     configs: {
       fake: config
     },
-    disableDiveSystemPrompt: false
+    disableZaiSystemPrompt: false
   }
 
   const setting = fromRawConfigToModelGroupSetting(fakeRawConfig)
@@ -64,9 +64,9 @@ export function fromModelConfigToLLMGroup(config: ModelConfig): LLMGroup {
 }
 
 export function fromRawConfigToModelGroupSetting(rawConfig: RawModelConfig): ModelGroupSetting {
-  const { configs, disableDiveSystemPrompt } = rawConfig
+  const { configs, disableZaiSystemPrompt } = rawConfig
   const settings = defaultModelGroupSetting()
-  settings.disableDiveSystemPrompt = disableDiveSystemPrompt ?? false
+  settings.disableZaiSystemPrompt = disableZaiSystemPrompt ?? false
   const allVerifiedList = localStorage.getItem("modelVerify")
 
   const groups = groupRawModelConfig(configs)
@@ -316,12 +316,12 @@ export function intoRawModelConfigWithQuery(setting: ModelGroupSetting, groupTer
 }
 
 export function intoRawModelConfig(setting: ModelGroupSetting, group: LLMGroup, model: BaseModel): RawModelConfig | null {
-  const { disableDiveSystemPrompt } = setting
+  const { disableZaiSystemPrompt } = setting
   const modelConfig = intoModelConfig(group, model)
 
   const activeName = "act"
   return {
-    disableDiveSystemPrompt,
+    disableZaiSystemPrompt,
     activeProvider: activeName,
     enableTools: model.enableTools ?? true,
     configs: {

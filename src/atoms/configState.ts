@@ -71,14 +71,14 @@ export type ModelConfigMap = Record<string, ModelConfig>
 export type RawModelConfig = {
   activeProvider: string
   configs: ModelConfigMap
-  disableDiveSystemPrompt?: boolean
+  disableZaiSystemPrompt?: boolean
   enableTools?: boolean
 }
 
 export const configAtom = atom<RawModelConfig>({
   activeProvider: "",
   configs: {},
-  disableDiveSystemPrompt: false
+  disableZaiSystemPrompt: false
 })
 
 export const updateConfigWithProviderAtom = atom(
@@ -215,11 +215,11 @@ export const writeRawConfigAtom = atom(
   }
 )
 
-export const disableDiveSystemPromptAtom = atom<boolean>(
+export const disableZaiSystemPromptAtom = atom<boolean>(
   (get) => {
     const config = get(configAtom)
-    if("disableDiveSystemPrompt" in config) {
-      return config.disableDiveSystemPrompt ?? false
+    if("disableZaiSystemPrompt" in config) {
+      return config.disableZaiSystemPrompt ?? false
     }
     return false
   }
@@ -231,18 +231,18 @@ export const updateDisableDiveSystemPromptAtom = atom(
     const { value } = params
     set(configAtom, {
       ...get(configAtom),
-      disableDiveSystemPrompt: value
+      disableZaiSystemPrompt: value
     })
 
     set(modelSettingsAtom, {
       ...get(modelSettingsAtom),
-      disableDiveSystemPrompt: value
+      disableZaiSystemPrompt: value
     })
 
     set(writeRawConfigAtom, {
       configs: get(configDictAtom),
       activeProvider: get(activeProviderAtom),
-      disableDiveSystemPrompt: value
+      disableZaiSystemPrompt: value
     })
   }
 )
@@ -267,7 +267,7 @@ export const writeEmptyConfigAtom = atom(
       configs: {},
       enableTools: true,
       activeProvider: EMPTY_PROVIDER,
-      disableDiveSystemPrompt: false
+      disableZaiSystemPrompt: false
     }
 
     await fetch("/api/config/model/replaceAll", {
