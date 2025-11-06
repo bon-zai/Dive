@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "mem0": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@mem0/mcp-server"],
+      "env": {
+        "MEM0_API_KEY": "your_mem0_api_key_here",
+        "DEFAULT_USER_ID": "mem0-zai-crew"
+      }
+    },
+    "desktop-commander": {
+      "command": "cmd",
+      "args": [
+        "/c", "npx", "-y",
+        "@smithery/cli@latest", "run",
+        "@wonderwhy-er/desktop-commander",
+        "--key", "your_smithery_key_here",
+        "--profile", "your_smithery_profile_here"
+      ]
+    },
+    "brave-search": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your_brave_api_key_here"
+      }
+    },
+    "chrome-devtools": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "chrome-devtools-mcp@latest"]
+    }
+  }
+}
