@@ -225,7 +225,7 @@ export const disableZaiSystemPromptAtom = atom<boolean>(
   }
 )
 
-export const updateDisableDiveSystemPromptAtom = atom(
+export const updateDisableZaiSystemPromptAtom = atom(
   null,
   (get, set, params: { value: boolean }) => {
     const { value } = params

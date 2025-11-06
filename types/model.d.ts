@@ -73,7 +73,7 @@ export interface CommonConfiguration {
 
 export interface ModelGroupSetting {
   groups: LLMGroup[]
-  disableDiveSystemPrompt: boolean
+  disableZaiSystemPrompt: boolean
   common: {
     configuration: CommonConfiguration
     [key: string]: any

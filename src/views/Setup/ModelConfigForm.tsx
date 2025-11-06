@@ -170,13 +170,13 @@ const ModelConfigForm: React.FC<ModelConfigFormProps> = ({
     group.models = [model]
     setSettings(prev => ({
       ...prev,
-      disableDiveSystemPrompt: false,
+      disableZaiSystemPrompt: false,
       enableTools: true,
       groups: [group]
     }))
     onSubmit(await saveConfig({
       activeProvider: "act",
-      disableDiveSystemPrompt: false,
+      disableZaiSystemPrompt: false,
       enableTools: true,
       configs: {
         act: intoModelConfig(group, model)

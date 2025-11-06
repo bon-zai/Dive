@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react"
 import ThemeSwitch from "../../components/ThemeSwitch"
 import Switch from "../../components/Switch"
 import { getAutoDownload, setAutoDownload as _setAutoDownload } from "../../updater"
-import { disableDiveSystemPromptAtom, updateDisableDiveSystemPromptAtom } from "../../atoms/configState"
+import { disableZaiSystemPromptAtom, updateDisableZaiSystemPromptAtom } from "../../atoms/configState"
 import { getIPCAutoLaunch, getIPCMinimalToTray, setIPCAutoLaunch, setIPCMinimalToTray } from "../../ipc/system"
 import { commonFlashAtom } from "../../atoms/globalState"
 import "../../styles/overlay/_System.scss"
@@ -19,8 +19,8 @@ const System = () => {
   const [autoDownload, setAutoDownload] = useState(false)
   const [autoLaunch, setAutoLaunch] = useState(false)
   const [minimalToTray, setMinimalToTray] = useState(false)
-  const disableDiveSystemPrompt = useAtomValue(disableDiveSystemPromptAtom)
-  const [, updateDisableDiveSystemPrompt] = useAtom(updateDisableDiveSystemPromptAtom)
+  const disableZaiSystemPrompt = useAtomValue(disableZaiSystemPromptAtom)
+  const [, updateDisableZaiSystemPrompt] = useAtom(updateDisableZaiSystemPromptAtom)
   const [, openOverlay] = useAtom(openOverlayAtom)
   const [, setCommonFlash] = useAtom(commonFlashAtom)
 
@@ -75,7 +75,7 @@ const System = () => {
   }
 
   const handleDefaultSystemPromptChange = async (value: boolean) => {
-    await updateDisableDiveSystemPrompt({ value })
+    await updateDisableZaiSystemPrompt({ value })
   }
 
   const openPromtSetting = () => {
@@ -171,7 +171,7 @@ const System = () => {
               <span className="system-list-name">{t("system.defaultSystemPrompt")}</span>
               <div className="system-list-switch-container">
                 <Switch
-                  checked={!disableDiveSystemPrompt}
+                  checked={!disableZaiSystemPrompt}
                   onChange={e => handleDefaultSystemPromptChange(!e.target.checked)}
                 />
               </div>
