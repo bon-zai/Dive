@@ -1,15 +1,15 @@
 [package]
-name = "dive"
+name = "bonzai"
 version = "0.10.0"
-description = "Dive"
-authors = ["Open Agent Platform"]
+description = "Bonzai"
+authors = ["Bonzai"]
 license = "MIT"
-repository = "https://github.com/OpenAgentPlatform/Dive"
+repository = "https://github.com/bon-zai/Dive"
 edition = "2021"
 rust-version = "1.77.2"
 
 [lib]
-name = "dive_lib"
+name = "bonzai_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

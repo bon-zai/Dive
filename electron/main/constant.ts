@@ -30,7 +30,7 @@ export const envPath = envPaths(app.getName(), {suffix: ""})
 export const legacyConfigDir = envPath.config
 export const cacheDir = envPath.cache
 export const homeDir = os.homedir()
-export const appDir = path.join(homeDir, ".dive")
+export const appDir = path.join(homeDir, ".bonzai")
 export const scriptsDir = path.join(appDir, "scripts")
 export const configDir = app.isPackaged ? path.join(appDir, "config") : path.join(process.cwd(), ".config")
 export const hostCacheDir = path.join(appDir, "host_cache")
@@ -71,15 +71,15 @@ export const DEF_MODEL_CONFIG = {
 export const DEF_PLUGIN_CONFIG = [
   {
     "name": "oap-platform",
-    "module": "dive_mcp_host.oap_plugin",
+    "module": "bonzai_mcp_host.oap_plugin",
     "config": {},
-    "ctx_manager": "dive_mcp_host.oap_plugin.OAPPlugin",
-    "static_callbacks": "dive_mcp_host.oap_plugin.get_static_callbacks"
+    "ctx_manager": "bonzai_mcp_host.oap_plugin.OAPPlugin",
+    "static_callbacks": "bonzai_mcp_host.oap_plugin.get_static_callbacks"
   }
 ]
 
 const dbPath = path.join(configDir, "db.sqlite")
-export const DEF_DIVE_HTTPD_CONFIG = {
+export const DEF_BONZAI_HTTPD_CONFIG = {
   "db": {
     "uri": `sqlite:///${dbPath}`,
     "pool_size": 5,

@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "Dive AI",
+    "title": "Bonzai",
     "openSidebar": "Open sidebar",
     "closeSidebar": "Close sidebar"
   },
@@ -53,8 +53,8 @@
     }
   },
   "welcome": {
-    "title": "Welcome to Dive AI",
-    "subtitle": "Start your AI conversation",
+    "title": "Welcome to Bonzai",
+    "subtitle": "Start chatting with Zai",
     "startChat": "Start Chat"
   },
   "setup": {

@@ -19,17 +19,17 @@ pub static CLIENT_ID: LazyLock<&'static str> = LazyLock::new(|| {
 pub static PROJECT_DIRS: LazyLock<Dirs> = LazyLock::new(|| {
     let home = dirs::home_dir().unwrap();
     Dirs {
-        root: home.join(".dive"),
-        cache: home.join(".dive/host_cache"),
-        bus: home.join(".dive/host_cache/bus"),
-        log: home.join(".dive/log"),
-        bin: home.join(".dive/bin"),
-        script: home.join(".dive/scripts"),
+        root: home.join(".bonzai"),
+        cache: home.join(".bonzai/host_cache"),
+        bus: home.join(".bonzai/host_cache/bus"),
+        log: home.join(".bonzai/log"),
+        bin: home.join(".bonzai/bin"),
+        script: home.join(".bonzai/scripts"),
 
         #[cfg(debug_assertions)]
         config: std::env::current_dir().unwrap().join("../.config"),
         #[cfg(not(debug_assertions))]
-        config: home.join(".dive/config"),
+        config: home.join(".bonzai/config"),
     }
 });
 

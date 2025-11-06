@@ -1,4 +1,4 @@
 [submodule "mcp-host"]
 	path = mcp-host
-	url = https://github.com/OpenAgentPlatform/dive-mcp-host.git
+	url = https://github.com/bon-zai/bonzai-mcp-host.git
 	branch = main

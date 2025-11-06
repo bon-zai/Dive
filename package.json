@@ -1,5 +1,5 @@
 {
-  "name": "dive",
+  "name": "bonzai",
   "private": true,
   "version": "0.10.0",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OpenAgentPlatform/Dive"
+    "url": "https://github.com/bon-zai/Dive"
   },
   "scripts": {
     "dev": "vite-node scripts/download-host-deps.ts && vite --config vite.config.electron.ts",

@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest stable version of Dive receives security updates. Make sure you are running the most recent release.
+Only the latest stable version of Bonzai receives security updates. Make sure you are running the most recent release.
 
 
 ## Reporting a Vulnerability

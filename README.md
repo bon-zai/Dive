@@ -1,121 +1,145 @@
 <div align="center">
-<img src="build/icon.png" alt="Dive" width="128" height="128">
-<h1>Dive AI Agent</h1>
+<img src="build/icon.png" alt="Bonzai" width="128" height="128">
+<h1>Bonzai - AI Orchestration Platform</h1>
 </div>
 
-![GitHub stars](https://img.shields.io/github/stars/OpenAgentPlatform/Dive?style=social)
-![GitHub forks](https://img.shields.io/github/forks/OpenAgentPlatform/Dive?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/OpenAgentPlatform/Dive?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/OpenAgentPlatform/Dive)
-![GitHub language count](https://img.shields.io/github/languages/count/OpenAgentPlatform/Dive)
-![GitHub top language](https://img.shields.io/github/languages/top/OpenAgentPlatform/Dive)
-![GitHub last commit](https://img.shields.io/github/last-commit/OpenAgentPlatform/Dive?color=red)
-[![Discord](https://img.shields.io/badge/Discord-Dive-blue?logo=discord&logoColor=white)](https://discord.gg/xaV7xzMYBA)
-[![Twitter Follow](https://img.shields.io/twitter/follow/Dive_ai_agent?style=social)](https://twitter.com/Dive_ai_agent)
+![GitHub repo size](https://img.shields.io/github/repo-size/bon-zai/Dive)
+![GitHub last commit](https://img.shields.io/github/last-commit/bon-zai/Dive?color=red)
 
-Dive is an open-source MCP Host Desktop Application that seamlessly integrates with any LLMs supporting function calling capabilities. ✨
-
-![Dive Demo](./docs/0.8.0_DiveGIF.gif)
+**Bonzai** is a next-generation AI orchestration platform with **Zai** as your primary AI agent. Built on the Model Context Protocol (MCP), Bonzai provides a clean, powerful chat experience with voice integration, multi-agent orchestration, and 87+ tools.
 
 ## Features 🎯
 
-- 🌐 **Universal LLM Support**: Compatible with ChatGPT, Anthropic, Ollama and OpenAI-compatible models
-- 💻 **Cross-Platform**: Available for Windows, MacOS, and Linux
-- 🔄 **Model Context Protocol**: Enabling seamless MCP AI agent integration on both stdio and SSE mode
-- ☁️ **OAP Cloud Integration**: One-click access to managed MCP servers via [OAPHub.ai](https://oaphub.ai/) - eliminates complex local deployments
-- 🏗️ **Dual Architecture**: Modern Tauri version alongside traditional Electron version for optimal performance
-- 🌍 **Multi-Language Support**: Supports 24+ languages including English, Traditional Chinese, Simplified Chinese, Spanish, Japanese, Korean, German, French, Italian, Portuguese, Russian, Thai, Vietnamese, Filipino, Indonesian, Polish, Turkish, Ukrainian, Swedish, Norwegian, Finnish, and Lao
-- ⚙️ **Advanced API Management**: Multiple API keys and model switching support with `model_settings.json`
-- 🛠️ **Granular Tool Control**: Enable/disable individual MCP tools for precise customization
-- 💡 **Custom Instructions**: Personalized system prompts for tailored AI behavior
-- ⌨️ **Keyboard Shortcuts**: Comprehensive hotkey support for efficient navigation and operations (rename, settings, reload, new chat, etc.)
-- 📝 **Chat Draft Saving**: Automatically saves chat input drafts to prevent data loss
-- 🔄 **Auto-Update Mechanism**: Automatically checks for and installs the latest application updates
+### Current (Phase 1)
+- 💬 **Clean Chat Interface**: Simple, beautiful conversation with Zai
+- 🧠 **Claude Sonnet 4.5**: Powered by Anthropic's latest model
+- 🔧 **MCP Integration**: 4 core tools ready (Mem0, Desktop Commander, Brave Search, Chrome DevTools)
+- 💻 **Cross-Platform**: Windows, macOS, Linux (Tauri + Electron)
+- 🌍 **Multi-Language**: 24+ languages supported
 
-## Recent updates(2025/11/5) - v0.10.0 🎉
+### Coming Soon
+- 🎤 **Voice Integration**: Hume EVI for empathic voice interactions
+- 🤝 **Multi-Agent Orchestration**: CrewAI + Minimax M2 integration
+- 📚 **Persistent Memory**: Mem0 for conversation continuity
+- 🖥️ **Desktop Commander**: Full desktop control via voice/chat
+- 🌐 **87+ MCP Tools**: Comprehensive tool ecosystem
 
-- 🔐 **MCP Server Authentication**: Added support for MCP server authentication
-  > ⚠️ **Note**: This feature is currently unstable and may require frequent re-authorization
+## What is Zai?
 
+**Zai** is your AI agent personality - professional but warm, direct and action-oriented, sarcastic but loyal. Think of it as your AI companion that remembers conversations, controls your desktop, and gets things done without being verbose.
 
-### Platform Availability
+## Architecture
 
-| Platform | Electron | Tauri |
-| :--- | :---: | :---: |
-| **Windows** | ✅ | ✅ |
-| **macOS** | ✅ | 🔜 |
-| **Linux** | ✅ | ✅ |
+- **Frontend**: React + TypeScript
+- **Desktop Framework**: Tauri (primary), Electron (fallback)
+- **Backend**: Rust (Tauri) + Python (MCP Host)
+- **State Management**: Jotai (atoms-based)
+- **AI Integration**: Claude API (Anthropic)
+- **Protocol**: Model Context Protocol (MCP)
 
-> **Migration Note:** Existing local MCP/LLM configurations remain fully supported. OAP integration is additive and does not affect current workflows.
+## Development Setup
 
-## Download and Install ⬇️
+### Prerequisites
+- Node.js 18+
+- Rust (for Tauri builds)
+- Python 3.12+ (for MCP host)
 
-Get the latest version of Dive:
-[![Download](https://img.shields.io/badge/Download-Latest%20Release-blue.svg)](https://github.com/OpenAgentPlatform/Dive/releases/latest)
+### Quick Start
 
-### Windows users: 🪟
-Choose between two architectures:
-- **Tauri Version** (Recommended): Smaller installer (<30MB), modern architecture
-- **Electron Version**: Traditional architecture, fully stable
-- Python and Node.js environments will be downloaded automatically after launching
+```bash
+# Clone the repository
+git clone --recursive https://github.com/bon-zai/Dive.git
+cd Dive
 
-### MacOS users: 🍎
-- **Electron Version**: Download the .dmg version
-- You need to install Python and Node.js (with npx uvx) environments yourself
-- Follow the installation prompts to complete setup
+# Install dependencies
+npm install
 
-### Linux users: 🐧
-Choose between two architectures:
-- **Tauri Version** (Recommended): Modern architecture with smaller installer size
-- **Electron Version**: Traditional architecture with .AppImage format
-- You need to install Python and Node.js (with npx uvx) environments yourself
-- For Ubuntu/Debian users:
-  - You may need to add `--no-sandbox` parameter
-  - Or modify system settings to allow sandbox
-  - Run `chmod +x` to make the AppImage executable
-- For Arch users:
-  - If you are using Arch Linux, you can install dive using an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers). For example: `paru -S dive-ai`
+# Run in development mode (Tauri)
+npm run dev:tauri
 
-## MCP Setup Options
+# Run in development mode (Electron)
+npm run dev
+```
 
-For more detailed instructions, please see [MCP Servers Setup](MCP_SETUP.md).
+### Build
 
-The easiest way to get started! Access enterprise-grade MCP tools instantly:
+```bash
+# Build for production (Tauri)
+npm run build
 
-1. **Sign up** at [OAPHub.ai](https://oaphub.ai/)
-2. **Connect** to Dive using one-click deep links or configuration files
-3. **Enjoy** managed MCP servers with zero setup - no Python, Docker, or complex dependencies required
+# Build for production (Electron)
+npm run build:electron
+```
 
-Benefits:
-- ✅ Zero configuration needed
-- ✅ Cross-platform compatibility
-- ✅ Enterprise-grade reliability
-- ✅ Automatic updates and maintenance
+## Configuration
 
-## Build 🛠️
+### API Keys
+Set up your Claude API key in Settings:
+1. Launch Bonzai
+2. Open Settings (⚙️)
+3. Add your Anthropic API key
 
-See [BUILD.md](BUILD.md) for more details.
+### MCP Tools
+Configure MCP servers in `.config/mcp_config.json`:
 
-## Contributing 🤝
+```json
+{
+  "mem0": {
+    "command": "cmd",
+    "args": ["/c", "npx", "-y", "@mem0/mcp-server"],
+    "env": {
+      "MEM0_API_KEY": "your_mem0_key",
+      "DEFAULT_USER_ID": "your_user_id"
+    }
+  }
+}
+```
 
-We welcome contributions from the community! Here's how you can help:
+See [MCP_SETUP.md](MCP_SETUP.md) for detailed configuration.
 
-### Development Setup
+## Project Roadmap
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/Dive.git`
-3. Install dependencies: `npm install`
-4. Start development: `npm run dev` (Electron) or `cargo tauri dev` (Tauri)
-5. Make your changes and test thoroughly
-6. Submit a pull request
+### ✅ Phase 1: Foundation (Current)
+- Complete rebrand from Dive to Bonzai/Zai
+- Single-agent chat experience
+- 4 core MCP tools operational
+- Clean, simplified UI
 
-## License 📄
+### 🔄 Phase 2: Voice Integration
+- Hume EVI integration
+- Voice input/output
+- Real-time audio streaming
+- Voice state management
 
-Dive is open-source software licensed under the [MIT License](LICENSE).
+### 🔜 Phase 3: Multi-Agent Orchestration
+- CrewAI integration
+- Minimax M2 for advanced agents
+- Background agent management
+- Agent coordination layer
 
-## Connect With Us 🌐
-- 💬 Join our [Discord](https://discord.gg/xaV7xzMYBA)
-- 🐦 Follow us on [Twitter/X](https://x.com/Dive_ai_agent) [Reddit](https://www.reddit.com/user/BigGo_official/) [Thread](https://www.threads.net/@dive_mcpserver)
-- ⭐ Star us on GitHub
-- 🐛 Report issues on our [Issue Tracker](https://github.com/OpenAgentPlatform/Dive/issues)
+### 🔜 Phase 4: Advanced Features
+- 87+ MCP tools ecosystem
+- Advanced memory management (Mem0)
+- Desktop Commander full integration
+- Custom agent personalities
 
+## Credits
+
+Bonzai is built on the foundation of [Dive](https://github.com/OpenAgentPlatform/Dive), an open-source MCP Host Desktop Application. We're grateful to the Open Agent Platform team for their excellent work on the MCP integration architecture.
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details
+
+## Contributing
+
+Contributions welcome! Please read our contributing guidelines before submitting PRs.
+
+## Support
+
+- 📧 Issues: [GitHub Issues](https://github.com/bon-zai/Dive/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/bon-zai/Dive/discussions)
+
+---
+
+**Built with ❤️ by the Bonzai team**

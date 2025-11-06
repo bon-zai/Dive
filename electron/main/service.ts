@@ -8,7 +8,7 @@ import {
   DEF_MCP_SERVER_CONFIG,
   cwd,
   DEF_MODEL_CONFIG,
-  DEF_DIVE_HTTPD_CONFIG,
+  DEF_BONZAI_HTTPD_CONFIG,
   hostCacheDir,
   __dirname,
   legacyConfigDir,
@@ -63,7 +63,7 @@ async function initApp() {
 
   // create dive_httpd config file if not exists
   const diveHttpdConfigPath = path.join(baseConfigDir, "dive_httpd.json")
-  await createFileIfNotExists(diveHttpdConfigPath, JSON.stringify(DEF_DIVE_HTTPD_CONFIG, null, 2))
+  await createFileIfNotExists(diveHttpdConfigPath, JSON.stringify(DEF_BONZAI_HTTPD_CONFIG, null, 2))
 
   // create plugin config file if not exists
   const pluginConfigPath = path.join(baseConfigDir, "plugin_config.json")

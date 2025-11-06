@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
-  "appId": "ai.oaphub.dive",
-  "productName": "Dive",
-  "copyright": "Copyright © 2025 Open Agent Platform",
+  "appId": "ai.bonzai.platform",
+  "productName": "Bonzai",
+  "copyright": "Copyright © 2025 Bonzai",
   "asar": true,
   "artifactName": "${productName}-electron-${version}-${os}-${arch}.${ext}",
   "protocols": {
-    "name": "dive",
+    "name": "bonzai",
     "schemes": [
-      "dive"
+      "bonzai"
     ]
   },
   "electronLanguages": ["de", "en", "es", "fi", "fil", "fr", "id", "it", "ja", "ko", "lo", "no", "pl", "pt", "ru", "sv", "th", "tr", "uk", "vi", "zh-CN", "zh-TW"],
@@ -42,9 +42,9 @@
     "darkModeSupport": true,
     "extendInfo": {
       "CFBundleLocalizations": ["de", "en", "es", "fi", "fil", "fr", "id", "it", "ja", "ko", "lo", "no", "pl", "pt", "ru", "sv", "th", "tr", "uk", "vi", "zh-CN", "zh-TW"],
-      "NSMicrophoneUsageDescription": "Microphone access may be used by Dive plugins, such as Jitsi video conferencing.",
-      "NSCameraUsageDescription": "Camera access may be used by Dive plugins, such as Jitsi video conferencing.",
-      "NSFocusStatusUsageDescription": "Focus status is used by Dive to determine whether to send notifications or not.",
+      "NSMicrophoneUsageDescription": "Microphone access may be used by Bonzai for voice interactions and plugins.",
+      "NSCameraUsageDescription": "Camera access may be used by Bonzai plugins.",
+      "NSFocusStatusUsageDescription": "Focus status is used by Bonzai to determine whether to send notifications or not.",
       "LSFileQuarantineEnabled": true,
       "NSAppleEventsUsageDescription": "need this permission to execute some functions",
       "com.apple.security.cs.allow-jit": true,
@@ -119,7 +119,7 @@
           "!.vscode/**/*",
           "!*.env",
           "!command_alias.json",
-          "!dive_httpd.json",
+          "!bonzai_httpd.json",
           "!mcp_config.json",
           "!model_config.json"
         ]
@@ -129,10 +129,10 @@
   "linux": {
     "target": ["AppImage"],
     "asarUnpack": ["**/*.node"],
-    "executableName": "dive",
+    "executableName": "bonzai",
     "desktop": {
       "entry": {
-        "MimeType": "x-scheme-handler/dive;"
+        "MimeType": "x-scheme-handler/bonzai;"
       }
     },
     "extraResources": [
@@ -164,7 +164,7 @@
           "!.vscode/**/*",
           "!*.env",
           "!command_alias.json",
-          "!dive_httpd.json",
+          "!bonzai_httpd.json",
           "!mcp_config.json",
           "!model_config.json"
         ]
@@ -190,6 +190,6 @@
     }
   ],
   "dmg": {
-    "title": "Dive-${version}"
+    "title": "Bonzai-${version}"
   }
 }

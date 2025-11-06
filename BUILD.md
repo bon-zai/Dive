@@ -1,4 +1,4 @@
-## Table of Contents Build Dive
+## Table of Contents Build Bonzai
 
 - [Development Requirements](#development-requirements)
 - [Development](#development)
@@ -28,7 +28,7 @@
 ### Clone Repository
 
 ```bash
-git clone --recurse-submodules https://github.com/OpenAgentPlatform/Dive.git
+git clone --recurse-submodules https://github.com/bon-zai/Dive.git
 cd Dive
 ```
 

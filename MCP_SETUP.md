@@ -1,114 +1,173 @@
-## MCP Setup Options
+# MCP Setup for Bonzai
 
-Dive offers two ways to access MCP tools: **OAP Cloud Services** (recommended for beginners) and **Local MCP Servers** (for advanced users).
+Bonzai uses the Model Context Protocol (MCP) to provide tools and capabilities to Zai, your AI agent.
 
-### Option 1: Local MCP Servers 🛠️
+## Configuration Location
 
-For advanced users who prefer local control. The system comes with a default echo MCP Server, and you can add more powerful tools like Fetch and Youtube-dl.
+MCP servers are configured in:
+- **User Config**: `~/.bonzai/mcp_config.json` (or `$HOME/.bonzai/mcp_config.json`)
 
-![Set MCP](./docs/ToolsManager.png)
+## Core MCP Tools
 
-### Option 2: OAP Cloud Services ☁️
+Bonzai comes configured with 4 core MCP tools:
 
-The easiest way to get started! Access enterprise-grade MCP tools instantly:
-
-1.  **Sign up** at [OAPHub.ai](https://oaphub.ai/)
-2.  **Connect** to Dive using one-click deep links or configuration files
-3.  **Enjoy** managed MCP servers with zero setup - no Python, Docker, or complex dependencies required
-
-Benefits:
-- ✅ Zero configuration needed
-- ✅ Cross-platform compatibility
-- ✅ Enterprise-grade reliability
-- ✅ Automatic updates and maintenance
-
-#### Quick Local Setup
-
-Add this JSON configuration to your Dive MCP settings to enable local tools:
+### 1. Mem0 (Memory)
+Provides persistent memory for Zai across conversations.
 
 ```json
- "mcpServers":{
-    "fetch": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-fetch",
-        "--ignore-robots-txt"
-      ],
-      "enabled": true
-    },
-    "filesystem": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/path/to/allowed/files"
-      ],
-      "enabled": true
-    },
-    "youtubedl": {
-      "command": "npx",
-      "args": [
-        "@kevinwatt/yt-dlp-mcp"
-      ],
-      "enabled": true
+{
+  "mem0": {
+    "command": "cmd",
+    "args": ["/c", "npx", "-y", "@mem0/mcp-server"],
+    "env": {
+      "MEM0_API_KEY": "your_mem0_api_key",
+      "DEFAULT_USER_ID": "mem0-zai-crew"
     }
   }
+}
 ```
 
-#### Using Streamable HTTP for Cloud MCP Services
+### 2. Desktop Commander
+Enables Zai to control your desktop (file operations, system commands, etc.)
 
-You can connect to external cloud MCP servers via Streamable HTTP transport. Here's the Dive configuration example for SearXNG service from OAPHub:
+```json
+{
+  "desktop-commander": {
+    "command": "cmd",
+    "args": [
+      "/c", "npx", "-y",
+      "@smithery/cli@latest", "run",
+      "@wonderwhy-er/desktop-commander",
+      "--key", "your_smithery_key",
+      "--profile", "your_smithery_profile"
+    ]
+  }
+}
+```
+
+### 3. Brave Search
+Provides web search capabilities via Brave Search API.
+
+```json
+{
+  "brave-search": {
+    "command": "cmd",
+    "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-brave-search"],
+    "env": {
+      "BRAVE_API_KEY": "your_brave_api_key"
+    }
+  }
+}
+```
+
+### 4. Chrome DevTools
+Enables browser inspection and automation via Chrome DevTools Protocol.
+
+```json
+{
+  "chrome-devtools": {
+    "command": "cmd",
+    "args": ["/c", "npx", "-y", "chrome-devtools-mcp@latest"]
+  }
+}
+```
+
+## Complete Example Configuration
+
+Create or edit `~/.bonzai/mcp_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "SearXNG_MCP_Server": {
-      "transport": "streamable",
-      "url": "https://proxy.oaphub.ai/v1/mcp/181672830075666436",
-      "headers": {
-        "Authorization": "GLOBAL_CLIENT_TOKEN"
+    "mem0": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@mem0/mcp-server"],
+      "env": {
+        "MEM0_API_KEY": "your_mem0_api_key",
+        "DEFAULT_USER_ID": "mem0-zai-crew"
       }
+    },
+    "desktop-commander": {
+      "command": "cmd",
+      "args": [
+        "/c", "npx", "-y",
+        "@smithery/cli@latest", "run",
+        "@wonderwhy-er/desktop-commander",
+        "--key", "your_smithery_key",
+        "--profile", "your_smithery_profile"
+      ]
+    },
+    "brave-search": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your_brave_api_key"
+      }
+    },
+    "chrome-devtools": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "chrome-devtools-mcp@latest"]
     }
   }
 }
 ```
 
-Reference: [@https://oaphub.ai/mcp/181672830075666436](https://oaphub.ai/mcp/181672830075666436)
+## Platform-Specific Configuration
 
-#### Using SSE Server (Non-Local MCP)
+### Windows
+Use `"command": "cmd"` and `"args": ["/c", "npx", ...]` as shown above.
 
-You can also connect to external MCP servers (not local ones) via SSE (Server-Sent Events). Add this configuration to your Dive MCP settings:
+### macOS/Linux
+Use `"command": "npx"` directly:
 
 ```json
 {
-  "mcpServers": {
-    "MCP_SERVER_NAME": {
-      "enabled": true,
-      "transport": "sse",
-      "url": "YOUR_SSE_SERVER_URL"
+  "mem0": {
+    "command": "npx",
+    "args": ["-y", "@mem0/mcp-server"],
+    "env": {
+      "MEM0_API_KEY": "your_mem0_api_key",
+      "DEFAULT_USER_ID": "mem0-zai-crew"
     }
   }
 }
 ```
 
-#### Additional Setup for yt-dlp-mcp
+## Adding Custom MCP Servers
 
-yt-dlp-mcp requires the yt-dlp package. Install it based on your operating system:
+You can add any MCP-compatible server to Bonzai:
 
-#### Windows
+1. **Via GUI**:
+   - Open Bonzai
+   - Navigate to Settings → Tools
+   - Click "Add MCP Server"
+   - Fill in command, args, and environment variables
 
-```bash
-winget install yt-dlp
-```
+2. **Via Config File**:
+   - Edit `~/.bonzai/mcp_config.json`
+   - Add your server to the `mcpServers` object
+   - Restart Bonzai
 
-#### MacOS
+## Troubleshooting
 
-```bash
-brew install yt-dlp
-```
+### Server Won't Connect
+- Check that `npx` is available in your PATH
+- Verify API keys are correct
+- Check logs in Bonzai Settings → System → Logs
 
-#### Linux
+### Missing Tools in Chat
+- Ensure the server is enabled in Settings → Tools
+- Restart Bonzai after configuration changes
+- Check server status in Tools panel
 
-```bash
-pip install yt-dlp
-```
+### API Key Issues
+- Mem0: Get your key at [mem0.ai](https://app.mem0.ai/)
+- Brave Search: Get your key at [brave.com/search/api](https://brave.com/search/api/)
+- Desktop Commander: Get credentials at [smithery.ai](https://smithery.ai/)
+
+## Resources
+
+- [Model Context Protocol Docs](https://modelcontextprotocol.io/)
+- [MCP Server Registry](https://github.com/modelcontextprotocol/servers)
+- [Smithery (Desktop Commander)](https://smithery.ai/)
+- [Mem0 Documentation](https://docs.mem0.ai/)
